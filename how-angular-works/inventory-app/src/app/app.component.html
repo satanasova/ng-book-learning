@@ -1,0 +1,6 @@
+<div class="inventory-app">
+  <products-list 
+    [productsList]="sortedProducts()"
+    (onProductSelected)="productWasSelected($event)">
+  </products-list>
+</div>

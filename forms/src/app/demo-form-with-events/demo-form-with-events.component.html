@@ -1,0 +1,10 @@
+<div class="ui raised segment">
+    <h2 class="ui header">Demo Form: with events</h2>
+    <form [formGroup]="myForm" class="ui form">
+        <div class="field">
+            <label for="skuInput">SKU</label>
+            <input type="text" id="skuInput" placeholder="SKU" name="sku" [formControl]="myForm.controls.sku">
+        </div>
+        <button type="submit" class="ui button">Submit</button>
+    </form>
+</div>

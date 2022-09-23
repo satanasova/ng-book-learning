@@ -1,0 +1,17 @@
+.star-wrapper {
+    width: 20px; 
+    height: 20px;
+    border: 1px solid black;
+    display: inline-block;
+    position: relative;
+    margin-right: 4px;
+}
+
+.star-wrapper .star-content {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    height: 20px;
+    background-color: black;
+}
+

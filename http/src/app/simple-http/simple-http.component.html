@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="page-header">
+        <h2>Basic GET Request</h2>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="onGetRequest()">GET Request</button>
+    <!-- <div *ngIf="loading"> -->
+    <img *ngIf="gettingData" src="../../assets/images/loading.gif" alt="">
+    <!-- </div> -->
+    <pre class="mt-3">{{posts | json}}</pre>
+    <ul>
+        <li *ngFor="let post of posts" class="list-unstyled">
+            <h3>{{post.title}}</h3>
+            <p>{{post.content}}</p>
+        </li>
+    </ul>
+
+</div>
+
+<div class="container-fluid">
+    <div class="page-header">
+        <h2>Basic POST Request</h2>
+    </div>
+    <div class="input-group">
+        <label for="title">Title:</label>
+        <input class="form-control" name="title" id="title" #newtitle>
+    </div>
+
+    <div class="input-group mt-3">
+        <label for="content">Content:</label>
+        <input class="form-control" name="content" id="content" #newcontent>
+    </div>
+    <button class="btn btn-success mt-3" type="button" (click)="onPostRequest(newtitle, newcontent)">POST Request</button>
+    <img *ngIf="postingData" src="../../assets/images/loading.gif" alt="">
+
+</div>
+
+<div class="container-fluid">
+    <div class="page-header">
+        <h2>Basic DELETE Request</h2>
+    </div>
+
+    <button class="btn btn-danger mt-3" type="button" (click)="onDeleteRequest()">DELETE Request</button>
+    <img *ngIf="deletingData" src="../../assets/images/loading.gif" alt="">
+</div>
+

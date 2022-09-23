@@ -1,0 +1,5 @@
+@import './assets/vendor/semantic.min.css';
+
+ul.ui.list li:before {
+    display: none;
+}

@@ -1,0 +1,2 @@
+<div>Rating: {{ rating }}</div>
+<review-star *ngFor="let point of getRatingPoints()" [starFullness]="point"></review-star>

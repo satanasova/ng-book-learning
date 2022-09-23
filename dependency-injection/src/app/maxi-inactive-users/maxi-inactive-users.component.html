@@ -1,0 +1,10 @@
+<div class="ui raised segment">
+    <h2 class="ui header">Inactive Users</h2>
+    <ul class="ui list">
+        <li class="item" *ngFor="let user of users; let id = index">
+            <span>{{user}}</span>
+            <span>  |  </span>
+            <a href="#" (click)="onSetToActive(id)">Set to Active</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,12 @@
+<h4 class="intro ui horizontal divider header">Style from variable</h4>
+<div class="ui input">
+    <input type="text" name="color" value="{{color}}" placeholder="Color" #colorinput>
+</div>
+
+<div class="ui input">
+    <input type="text" name="fontSize" value="{{fontSize}}" placeholder="Font Size" #fontinput>
+</div>
+
+<button class="ui primarry button" (click)="apply(colorinput.value, fontinput.value)"> Apply settings</button>
+
+<p [style.color]="color" [style.font-size.px]="fontSize">{{color}} text</p>
