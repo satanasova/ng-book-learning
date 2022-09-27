@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { ProtectedComponent } from './protected/protected.component';
 import { AUTH_PROVIDERS } from './auth.service';
 import { LoggedInGuard } from './logged-in.guard';
+import { ProductsComponent } from './products/products.component';
 
 
 
@@ -22,7 +23,8 @@ import { LoggedInGuard } from './logged-in.guard';
     ContactComponent,
     ProductComponent,
     LoginComponent,
-    ProtectedComponent
+    ProtectedComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule, 
