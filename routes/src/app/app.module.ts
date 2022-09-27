@@ -7,6 +7,10 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductComponent } from './product/product.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { ProtectedComponent } from './protected/protected.component';
+import { AUTH_PROVIDERS } from './auth.service';
+import { LoggedInGuard } from './logged-in.guard';
 
 
 
@@ -16,13 +20,15 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AUTH_PROVIDERS,LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
