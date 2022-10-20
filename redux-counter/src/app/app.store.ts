@@ -10,7 +10,7 @@ const devtools: StoreEnhancer<AppState> =
     window['__REDUX_DEVTOOLS_EXTENSION__']() : f => f;
 
 export function createAppStore(): Store<AppState> {
-    return createStore(reducer)
+    return createStore(reducer, compose(devtools))
 }
 
 export const AppStore = new InjectionToken('App.store');
