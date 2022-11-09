@@ -131,10 +131,18 @@ export const getUnreadMessagesCount = createSelector(
 );
 
 
-//  export const getAllMessages = createSelector(
-//    getAllThreads,
-//    ( threads: Thread[] ) =>
-//      threads.reduce( // gather all messages
-//        (messages, thread) => [...messages, ...thread.messages],
-//        []).sort((m1, m2) => m1.sentAt - m2.sentAt)); // sort them by time
+ export const getAllMessages = createSelector(getAllThreads,(threads: Thread[]) => {
+    console.log('getAllMessages', threads)
+
+    return threads.reduce( // gather all messages
+    (messages: Message[], thread: Thread) => [...messages, ...thread.messages],
+    [])
+});
  
+// export const getAllMessages = createSelector(getAllThreads,(threads: Thread[]) => {
+//     console.log('getAllMessages', threads)
+    // threads.reduce( // gather all messages
+    //     (messages, thread) => [...messages, ...thread.messages],
+    //     []).sort((m1, m2) => m1.sentAt - m2.sentAt); // sort them by time
+// })
+      

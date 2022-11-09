@@ -1,6 +1,6 @@
 import * as Redux from 'redux';
 import { AppState } from '../app.reducer';
-// import { getAllMessages } from '../thread/thread.reducer';
+import { getAllMessages } from '../thread/thread.reducer';
 import { uuid } from '../util/uuid';
 import * as moment from 'moment';
 import { Thread } from '../thread/thread.model';
@@ -121,65 +121,70 @@ export function ChatExampleData(store: Redux.Store<AppState>) {
   // depending on which thread the message was sent to, the bot will respond
   // in kind.
 
-  const handledMessages = {};
+  const handledMessages: string[] = [];
 
   store.subscribe( () => {
-    // getAllMessages(store.getState())
-    //   // bots only respond to messages sent by the user, so
-    //   // only keep messages sent by the current user
-    //   .filter((message: any) => message.author.id === me.id)
-    //   .map((message: any) => {
+    let allMessages = getAllMessages(store.getState());
+    let myMessages = getAllMessages(store.getState())
+    .filter((message: any) => message.author.id === me.id)
 
-    //     // This is a bit of a hack and we're stretching the limits of a faux
-    //     // chat app. Every time there is a new message, we only want to keep the
-    //     // new ones. This is a case where some sort of queue would be a better
-    //     // model
-    //     if (handledMessages.hasOwnProperty(message.id)) {
-    //       return;
-    //     }
-    //     // handledMessag es[message.id] = true;
+    getAllMessages(store.getState())
+      // bots only respond to messages sent by the user, so
+      // only keep messages sent by the current user
+      .filter((message: any) => message.author.id === me.id)
+      .map((message: any) => {
+        // This is a bit of a hack and we're stretching the limits of a faux
+        // chat app. Every time there is a new message, we only want to keep the
+        // new ones. This is a case where some sort of queue would be a better
+        // model
+        const isMessageHandled = handledMessages.indexOf(message.id) >= 0;
+        if (isMessageHandled) {
+          return;
+        }
 
-    //     switch (message.thread.id) {
-    //       case tEcho.id:
-    //         // echo back the same message to the user
-    //         store.dispatch(ThreadActions.addMessage(tEcho, {
-    //           author: echo,
-    //           text: message.text
-    //         }));
+        handledMessages.push(message.id);
 
-    //         break;
-    //       case tRev.id:
-    //         // echo back the message reveresed to the user
-    //         store.dispatch(ThreadActions.addMessage(tRev, {
-    //           author: rev,
-    //           text: message.text.split('').reverse().join('')
-    //         }));
+        switch (message.thread.id) {
+          case tEcho.id:
+            // echo back the same message to the user
+            store.dispatch(ThreadActions.addMessage(tEcho, {
+              author: echo,
+              text: message.text
+            }));
 
-    //         break;
-    //       case tWait.id:
-    //         let waitTime: number = parseInt(message.text, 10);
-    //         let reply: string;
+            break;
+          case tRev.id:
+            // echo back the message reveresed to the user
+            store.dispatch(ThreadActions.addMessage(tRev, {
+              author: rev,
+              text: message.text.split('').reverse().join('')
+            }));
 
-    //         if (isNaN(waitTime)) {
-    //           waitTime = 0;
-    //           reply = `I didn\'t understand ${message}. Try sending me a number`;
-    //         } else {
-    //           reply = `I waited ${waitTime} seconds to send you this.`;
-    //         }
+            break;
+          case tWait.id:
+            let waitTime: number = parseInt(message.text, 10);
+            let reply: string;
 
-    //         setTimeout(
-    //           () => {
-    //             store.dispatch(ThreadActions.addMessage(tWait, {
-    //               author: wait,
-    //               text: reply
-    //             }));
-    //           },
-    //           waitTime * 1000);
+            if (isNaN(waitTime)) {
+              waitTime = 0;
+              reply = `I didn\'t understand ${message}. Try sending me a number`;
+            } else {
+              reply = `I waited ${waitTime} seconds to send you this.`;
+            }
 
-    //         break;
-    //       default:
-    //         break;
-    //     }
-    //   });
+            setTimeout(
+              () => {
+                store.dispatch(ThreadActions.addMessage(tWait, {
+                  author: wait,
+                  text: reply
+                }));
+              },
+              waitTime * 1000);
+
+            break;
+          default:
+            break;
+        }
+      });
   });
 }

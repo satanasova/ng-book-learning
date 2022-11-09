@@ -8,10 +8,12 @@ import { Message } from '../message/message.model';
 })
 export class ChatMessageComponent implements OnInit {
   @Input() message!: Message;
-  
+  incoming!: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.incoming = !this.message.author.isClient;
   }
 
 }

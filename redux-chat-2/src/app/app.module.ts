@@ -10,6 +10,7 @@ import { ChatThreadsComponent } from './chat-threads/chat-threads.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { appStoreProviders } from './app.store';
 import { FormsModule } from '@angular/forms';
+import { FromNowPipe } from './pipes/from-now.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     ChatPageComponent,
     ChatThreadComponent,
     ChatThreadsComponent,
-    ChatWindowComponent
+    ChatWindowComponent,
+    FromNowPipe
   ],
   imports: [
     BrowserModule,

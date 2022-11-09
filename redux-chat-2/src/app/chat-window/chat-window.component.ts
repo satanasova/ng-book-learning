@@ -41,7 +41,7 @@ export class ChatWindowComponent implements OnInit {
       .nativeElement.querySelector('.msg-container-base');
 
     if(scrollPane) {
-      setTimeout(() => scrollPane.scrollTop = scrollPane.scrollHeight);
+      setTimeout(() => scrollPane.scrollTop = scrollPane.scrollHeight, 100);
     }
   }
 
