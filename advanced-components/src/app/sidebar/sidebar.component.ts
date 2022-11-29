@@ -8,7 +8,9 @@ import { ExampleDef } from '../example.model';
 export class SidebarComponent implements OnInit {
   @Input('items') items: ExampleDef[] = [];
 
-  constructor() { }
+  constructor() {
+    (window as any)['sidebar'] = this;
+  }
 
   ngOnInit(): void {
   }

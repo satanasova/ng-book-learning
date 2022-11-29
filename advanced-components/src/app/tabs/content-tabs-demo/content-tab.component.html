@@ -1,0 +1,5 @@
+<div class="ui bottom attached tab segment"
+    [class.active]="active" *ngIf="active">
+    <ng-content *ngIf="dataLoaded"></ng-content>
+    <div *ngIf="!dataLoaded" class="ui active loader"></div>
+</div>
