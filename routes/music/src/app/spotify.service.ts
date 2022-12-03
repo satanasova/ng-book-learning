@@ -24,6 +24,7 @@ export class SpotifyService {
       headers: headers
     };
 
+    console.log('will get ', queryURL);
     return this.http.request('GET', queryURL, options)
     // return getSongs();
   }
@@ -37,6 +38,10 @@ export class SpotifyService {
 
   getTrack(id: string): Observable<any> {
     return this.query(`/tracks/${id}`);
+  }
+
+  getArtist(id: string): Observable<any> {
+    return this.query(`/artists/${id}`);
   }
 }
 

@@ -9,6 +9,7 @@ import { youtubeSearchInjectables } from './youtube-search/youtube-search.inject
 import { SearchBoxComponent } from './youtube-search/search-box.component';
 import { SearchResultComponent } from './youtube-search/search-result.component';
 import { FormsModule } from '@angular/forms';
+import { MoreHttpRequestsComponent } from './more-http-requests/more-http-requests.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     SimpleHttpComponent,
     YoutubeSearchComponent,
     SearchBoxComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    MoreHttpRequestsComponent
   ],
   imports: [
     BrowserModule,
